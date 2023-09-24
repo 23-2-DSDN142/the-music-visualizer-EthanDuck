@@ -18,8 +18,8 @@ let overheadCam;
 let moveableCam;
 
 let camX = 0;
-let camY = -400;
-let camZ = 800;
+let camY = -800;
+let camZ = 500;
 
 function songLoadedError() {
   songButton.elt.innerHTML = "Song: Load Error";
@@ -57,8 +57,6 @@ function setup() {
   main_canvas = createCanvas(canvasWidth, canvasHeight, WEBGL);
   main_canvas.parent('canvasContainer');
   song = loadSound('song.mp3', songLoaded, songLoadedError, songLoadedSoFar);  
-
-  debugMode();
   
   overheadCam = createCamera();
   moveableCam = createCamera();
