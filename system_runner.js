@@ -14,6 +14,12 @@ let songIsPlaying = false;
 let songEpoch = 0;              // millis when song starts
 let table;
 let words;
+let overheadCam;
+let moveableCam;
+
+let camX = 0;
+let camY = -400;
+let camZ = 800;
 
 function songLoadedError() {
   songButton.elt.innerHTML = "Song: Load Error";
@@ -51,9 +57,17 @@ function setup() {
   main_canvas = createCanvas(canvasWidth, canvasHeight, WEBGL);
   main_canvas.parent('canvasContainer');
   song = loadSound('song.mp3', songLoaded, songLoadedError, songLoadedSoFar);  
-  
-  debugMode();
 
+  debugMode();
+  
+  overheadCam = createCamera();
+  moveableCam = createCamera();
+
+  overheadCam.setPosition(0, -1000, 1);
+  overheadCam.lookAt(0, 0, 0);
+
+  moveableCam.setPosition(camX, camY, camZ);
+  moveableCam.lookAt(0, 0, 0);
 
   frameRate(60);
   angleMode(DEGREES);

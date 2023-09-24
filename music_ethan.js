@@ -1,24 +1,29 @@
-let camX = 0;
-let camY = -200;
-let camZ = 500;
-
-let overheadCam;
-let moveableCam;
-
 // vocal, drum, bass, and other are volumes ranging from 0 to 100
 function draw_one_frame(words, vocal, drum, bass, other, counter) {
-
-  background(255);
-
-  sceneCam();
+  background(0);
+  light();
+  camMove();
   stage();
-
-
+  
   // pointLight(250, 250, 250, (mouseX - width / 2), (mouseY - height / 2), 50);
 
-  box(150)
-  fill(255, 0, 0);
+}
 
+function light(){
+  let color = 255;
+  let xPos = 1;
+  let yPos = 1;
+  let zPos = 50;
+
+  push()
+
+  strokeWeight(4);
+  stroke(255);
+  line(100, -500, 200, 0, 0, 0);
+
+  pointLight(255, 255, 255, xPos, yPos, zPos);
+
+  pop()
 }
 
 function stage(){
@@ -29,25 +34,15 @@ function stage(){
   pop()
 }
 
-function sceneCam() {
-  overheadCam = createCamera();
-  moveableCam = createCamera();
-
-  overheadCam.setPosition(0, -1000, 1);
-  overheadCam.lookAt(0, 0, 0);
-
-  moveableCam.setPosition(camX, camY, camZ);
-  moveableCam.lookAt(0, 0, 0);
-
-
-  // camera(camX, camY, camZ, 0, 0, 0, 0, 1, 0);
-
+function camMove() { 
   if (keyIsDown(49)) { //1 Key
     setCamera(moveableCam);
+    print("1")
   }
 
   if (keyIsDown(50)) { //2 Key
     setCamera(overheadCam);
+    print("2")
   }
 
   if (keyIsDown(87)) { //W Key
@@ -73,4 +68,7 @@ function sceneCam() {
   if (keyIsDown(69)) { // E Key
     camZ -= 10;
   }
+
+  moveableCam.setPosition(camX, camY, camZ);
+  moveableCam.lookAt(0, 0, 0);
 }
