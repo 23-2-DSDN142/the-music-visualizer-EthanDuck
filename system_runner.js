@@ -14,7 +14,7 @@ let songIsPlaying = false;
 let songEpoch = 0;              // millis when song starts
 let table;
 let words;
-let overheadCam;
+let frontCam;
 let moveableCam;
 
 let camX = 0;
@@ -58,11 +58,11 @@ function setup() {
   main_canvas.parent('canvasContainer');
   song = loadSound('song.mp3', songLoaded, songLoadedError, songLoadedSoFar);  
   
-  overheadCam = createCamera();
+  frontCam = createCamera();
   moveableCam = createCamera();
 
-  overheadCam.setPosition(0, -1000, 1);
-  overheadCam.lookAt(0, 0, 0);
+  frontCam.setPosition(0, 0, 1000);
+  frontCam.lookAt(0, 0, 0);
 
   moveableCam.setPosition(camX, camY, camZ);
   moveableCam.lookAt(0, 0, 0);
@@ -222,35 +222,35 @@ function draw() {
   }
 }
 
-function keyTyped() {
-  if (key == '1') {
-    song.setVolume(0.1);
-  }
-  if (key == '2') {
-    song.setVolume(0.2);
-  }
-  if (key == '3') {
-    song.setVolume(0.3);
-  }
-  if (key == '4') {
-    song.setVolume(0.4);
-  }
-  if (key == '5') {
-    song.setVolume(0.5);
-  }
-  if (key == '6') {
-    song.setVolume(0.6);
-  }
-  if (key == '7') {
-    song.setVolume(0.7);
-  }
-  if (key == '8') {
-    song.setVolume(0.8);
-  }
-  if (key == '9') {
-    song.setVolume(0.9);
-  }
-  if (key == '0') {
-    song.setVolume(1.0);
-  }
-}
+// function keyTyped() {
+//   if (key == '1') {
+//     song.setVolume(0.1);
+//   }
+//   if (key == '2') {
+//     song.setVolume(0.2);
+//   }
+//   if (key == '3') {
+//     song.setVolume(0.3);
+//   }
+//   if (key == '4') {
+//     song.setVolume(0.4);
+//   }
+//   if (key == '5') {
+//     song.setVolume(0.5);
+//   }
+//   if (key == '6') {
+//     song.setVolume(0.6);
+//   }
+//   if (key == '7') {
+//     song.setVolume(0.7);
+//   }
+//   if (key == '8') {
+//     song.setVolume(0.8);
+//   }
+//   if (key == '9') {
+//     song.setVolume(0.9);
+//   }
+//   if (key == '0') {
+//     song.setVolume(1.0);
+//   }
+// }

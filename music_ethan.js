@@ -1,30 +1,60 @@
 // vocal, drum, bass, and other are volumes ranging from 0 to 100
 function draw_one_frame(words, vocal, drum, bass, other, counter) {
   background(0);
-  light(200, 0, 0, 0);
+  rack(100, 100, 500, 0)
   camMove();
   scene();
 }
 
-function light(rackX, rackY, lightX, lightY){
-  push()
+function rack(rackX, rackY, lightX, lightY) {
+  for (let i = 0; i < 10; i++) {
 
-  strokeWeight(4);
+    light(rackX, rackY, lightX, lightY);
+
+    rackY += 100;
+    lightY += 100;
+  }
+}
+
+function light(rackX, rackY, lightX, lightY) {
+  push()
+  strokeWeight(5);
   stroke(255, 0, 255);
-  line(rackX, -500, rackY, lightX, lightY, 0);
-
+  line(rackX, -500, rackY, lightX, 0, lightY);
   pop()
 
-  pointLight(250, 250, 250, 0, -80, 0);
+  pointLight(50, 0, 20, lightX, lightY, 0);
 }
 
-
-
-function scene(){
+function scene() {
   push()
-  fill(200, 0, 200);
-  rotateX(90);
-  plane(1000, 1000, 200, 200);
+  fill(50, 0, 200);
+
+  let size = 3000;
+  let hSize = (size / 2)
+
+  translate(0, 0, -hSize)
+  plane(size, size, 200, 200);
+
+  rotateX(90)
+  translate(0, hSize, -hSize)
+  plane(size, size, 200, 200);
+
+  rotateX(90)
+  translate(0, hSize, -hSize)
+  plane(size, size, 200, 200);
+
+  rotateX(90)
+  translate(0, hSize, -hSize)
+  plane(size, size, 200, 200);
+
+  rotateY(90)
+  translate(-hSize, 0, -hSize)
+  plane(size, size, 200, 200);
+
+  rotateY(180)
+  translate(0, 0,-size)
+  plane(size, size, 200, 200);
 
   pop()
 }
@@ -32,12 +62,12 @@ function scene(){
 
 
 
-function camMove() { 
+function camMove() {
   if (keyIsDown(49)) { //1 Key
     setCamera(moveableCam);
   }
   if (keyIsDown(50)) { //2 Key
-    setCamera(overheadCam);
+    setCamera(frontCam);
   }
   if (keyIsDown(87)) { //W Key
     camY += 10;
