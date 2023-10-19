@@ -18,8 +18,8 @@ let frontCam;
 let moveableCam;
 
 let camX = 0;
-let camY = -800;
-let camZ = 500;
+let camY = -400;
+let camZ = 1000;
 
 function songLoadedError() {
   songButton.elt.innerHTML = "Song: Load Error";
