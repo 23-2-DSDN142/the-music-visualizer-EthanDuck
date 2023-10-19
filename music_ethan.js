@@ -235,8 +235,7 @@ function draw_one_frame(words, vocal, bass, curSlice) {
 
       camMove()
       scene(0, 0, 0);
-    } else if (curSlice < sec(96)){
-      
+    } else if (curSlice < sec(113)){
       rack(100, -500, 0, 0, 0, 0, vocal, curSlice, false, 0, 200, 255, "scene9");
       rack(-100, -500, 0, 0, 0, 0, vocal, curSlice, true, 0, 200, 255, "scene9");
 
@@ -249,20 +248,7 @@ function draw_one_frame(words, vocal, bass, curSlice) {
       camMove()
       scene(0, 0, 0);
 
-    } else if (curSlice < sec(113)){
-      
-      rack(100, -500, 0, 0, 0, 0, vocal, curSlice, false, 0, 200, 255, "scene9");
-      rack(-100, -500, 0, 0, 0, 0, vocal, curSlice, true, 0, 200, 255, "scene9");
-
-      rack(50, -200, 0, 0, -200, 0, vocal, curSlice, true, 0, 255, 255, "scene1");
-      rack(-50, -200, 0, 0,-200, 0, vocal, curSlice, false, 0, 255, 255, "scene1");
-
-      camY -= (curSlice / 15000);
-
-      camMove()
-      scene(0, 0, 0);
-
-    } else if (curSlice < sec(112.9)){
+    } else if (curSlice < sec(114.8)){
       rack(0, 0, 10, 0, -2000, 0, bass, curSlice, false, 255, 0, 0, "scene7");
       rack(0, 0, 10, 0, 2000, 0, bass, curSlice, true, 255, 0, 0, "scene7");
 
@@ -272,16 +258,17 @@ function draw_one_frame(words, vocal, bass, curSlice) {
 
       camMove();
       scene(255, 0, 0);
-    } else if (curSlice < sec(114)){
+    } else if (curSlice < sec(115.4)){
      
-    } else if (curSlice < sec(114.6)){
+    } else if (curSlice < sec(117)){
       rack(0, 0, 10, 0, 2000, 0, bass, curSlice, false, 255, 255, 255, "scene7");
       rack(0, 0, 10, 0, -2000, 0, bass, curSlice, true, 255, 255, 255, "scene7");
 
       scene(255, 0, 0);
-    } else if (curSlice < sec(116.8)){
+
+    } else if (curSlice < sec(117.6)){
      
-    } else if (curSlice < sec(117.2)){
+    } else if (curSlice < sec(119.5)){
       rack(0, 0, 10, 0, -2000, 0, bass, curSlice, false, 255, 255, 255, "scene7");
       rack(0, 0, 10, 0, 2000, 0, bass, curSlice, true, 255, 255, 255, "scene7");
 
@@ -289,7 +276,48 @@ function draw_one_frame(words, vocal, bass, curSlice) {
       rack(0, 0, 10, 0, -2000, 0, bass, curSlice, true, 255, 0, 0, "scene7");
 
       scene(0, 0, 0);
-    } 
+
+    } else if (curSlice < sec(124.5)){
+     
+
+    } else if (curSlice < sec(126)) {
+      rack(100, 500, 0, 0, 0, 0, vocal, curSlice, false, 200, 0, 255, "scene10");
+      rack(-100, 500, 0, 0, 0, 0, vocal, curSlice, true, 200, 0, 255, "scene10");
+
+      rack(100, -500, 0, 0, 0, 0, vocal, curSlice, false, 200, 0, 255, "scene10");
+      rack(-100, -500, 0, 0, 0, 0, vocal, curSlice, true, 200, 0, 255, "scene10");
+
+      rack(100, 0, 0, 0, 0, 0, vocal, curSlice, true, 0, 0, 255, "scene1");
+      rack(-100, 0, 0, 0, 0, 0, vocal, curSlice, false, 0, 0, 255, "scene1");
+
+      rack(100, -200, 0, 0, -200, 0, vocal, curSlice, true, 0, 0, 255, "scene1");
+      rack(-100, -200, 0, 0, -200, 0, vocal, curSlice, false, 0, 0, 255, "scene1");
+
+      camX = 0;
+      camY = -250;
+      camZ = 1500;
+
+      camMove()
+      scene(200, 0, 200);
+    } else if (curSlice < sec(300)) {
+      rack(100, 500, 0, 0, 0, 0, vocal, curSlice, false, 200, 0, 255, "scene10");
+      rack(-100, 500, 0, 0, 0, 0, vocal, curSlice, true, 200, 0, 255, "scene10");
+
+      rack(100, -500, 0, 0, 0, 0, vocal, curSlice, false, 200, 0, 255, "scene10");
+      rack(-100, -500, 0, 0, 0, 0, vocal, curSlice, true, 200, 0, 255, "scene10");
+
+      rack(100, 0, 0, 0, 0, 0, vocal, curSlice, true, 0, 0, 255, "scene1");
+      rack(-100, 0, 0, 0, 0, 0, vocal, curSlice, false, 0, 0, 255, "scene1");
+
+      rack(100, -200, 0, 0, -200, 0, vocal, curSlice, true, 0, 0, 255, "scene1");
+      rack(-100, -200, 0, 0, -200, 0, vocal, curSlice, false, 0, 0, 255, "scene1");
+
+      camZ -= (curSlice / 20000);
+      camY -= (curSlice / 50000);
+
+      camMove()
+      scene(200, 0, 200);
+    }
   }
 }
 
@@ -352,7 +380,6 @@ function rack(rackX, rackY, rackZ, lightX, lightY, lightZ, track, curSlice, inve
 
       } else if (mode == "scene8") {
 
-        lightZ += (0.5 * (sin(curSlice * 0)) * 100)
         invert ? (lightX += ((sin(curSlice * 0.2)) * 200)) : (lightX -= ((sin(curSlice * 0.2)) * 200))
 
         G += ((cos(curSlice * 3)) * 80)
@@ -367,7 +394,16 @@ function rack(rackX, rackY, rackZ, lightX, lightY, lightZ, track, curSlice, inve
           G = 200
         }
 
+      } else if (mode == "scene10") {
 
+        invert ? (lightX += ((sin(curSlice * 3)) * 200)) : (lightX -= ((sin(curSlice * 3)) * 200))
+
+        if (Math.round((curSlice % 90) / 9) == i) {
+          G = 100
+        } else {
+          G = 200
+        }
+        
       }
     }
   }
