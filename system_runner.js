@@ -1,6 +1,5 @@
-const canvasWidth = 540;
-const canvasHeight = 960;
-
+const canvasWidth = 1920;
+const canvasHeight = 1080;
 
 let mainCanvas;
 
@@ -15,6 +14,12 @@ let songIsPlaying = false;
 let songEpoch = 0;              // millis when song starts
 let table;
 let words;
+let frontCam;
+let moveableCam;
+
+let camX = 0;
+let camY = -400;
+let camZ = 1600;
 
 function songLoadedError() {
   songButton.elt.innerHTML = "Song: Load Error";
@@ -49,10 +54,19 @@ let volumes = [];
 let volume_length = 0;
 
 function setup() {
-  main_canvas = createCanvas(canvasWidth, canvasHeight);
+  main_canvas = createCanvas(canvasWidth, canvasHeight, WEBGL);
   main_canvas.parent('canvasContainer');
   song = loadSound('song.mp3', songLoaded, songLoadedError, songLoadedSoFar);  
   
+  frontCam = createCamera();
+  moveableCam = createCamera();
+
+  frontCam.setPosition(0, 0, 1500);
+  frontCam.lookAt(0, 0, 0);
+
+  moveableCam.setPosition(camX, camY, camZ);
+  moveableCam.lookAt(0, 0, 0);
+
   frameRate(60);
   angleMode(DEGREES);
 
@@ -202,41 +216,41 @@ function draw() {
         slider2.value(row[1]);
         slider3.value(row[2]);
         slider4.value(row[3]);
-        draw_one_frame(cur_words, row[0], row[1], row[2], row[3], curSlice);
+        draw_one_frame(cur_words, volumes[0], volumes[2], curSlice);
       }
     }
   }
 }
 
-function keyTyped() {
-  if (key == '1') {
-    song.setVolume(0.1);
-  }
-  if (key == '2') {
-    song.setVolume(0.2);
-  }
-  if (key == '3') {
-    song.setVolume(0.3);
-  }
-  if (key == '4') {
-    song.setVolume(0.4);
-  }
-  if (key == '5') {
-    song.setVolume(0.5);
-  }
-  if (key == '6') {
-    song.setVolume(0.6);
-  }
-  if (key == '7') {
-    song.setVolume(0.7);
-  }
-  if (key == '8') {
-    song.setVolume(0.8);
-  }
-  if (key == '9') {
-    song.setVolume(0.9);
-  }
-  if (key == '0') {
-    song.setVolume(1.0);
-  }
-}
+// function keyTyped() {
+//   if (key == '1') {
+//     song.setVolume(0.1);
+//   }
+//   if (key == '2') {
+//     song.setVolume(0.2);
+//   }
+//   if (key == '3') {
+//     song.setVolume(0.3);
+//   }
+//   if (key == '4') {
+//     song.setVolume(0.4);
+//   }
+//   if (key == '5') {
+//     song.setVolume(0.5);
+//   }
+//   if (key == '6') {
+//     song.setVolume(0.6);
+//   }
+//   if (key == '7') {
+//     song.setVolume(0.7);
+//   }
+//   if (key == '8') {
+//     song.setVolume(0.8);
+//   }
+//   if (key == '9') {
+//     song.setVolume(0.9);
+//   }
+//   if (key == '0') {
+//     song.setVolume(1.0);
+//   }
+// }
