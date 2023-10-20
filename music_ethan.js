@@ -1,4 +1,3 @@
-// Magic Number: (2)*9862/164
 function draw_one_frame(words, vocal, bass, curSlice) {
   background(0);
 
@@ -470,34 +469,7 @@ function scene(R, G, B) {
   pop()
 }
 
-
-
-
 function camMove() {
-  if (keyIsDown(49)) { //1 Key
-    setCamera(moveableCam);
-  }
-  if (keyIsDown(50)) { //2 Key
-    setCamera(frontCam);
-  }
-  if (keyIsDown(87)) { //W Key
-    camY += 2;
-  }
-  if (keyIsDown(65)) { //A Key
-    camX += 2;
-  }
-  if (keyIsDown(83)) { //S Key
-    camY -= 2;
-  }
-  if (keyIsDown(68)) { // D Key
-    camX -= 2;
-  }
-  if (keyIsDown(81)) { // Q Key
-    camZ += 2;
-  }
-  if (keyIsDown(69)) { // E Key
-    camZ -= 2;
-  }
   moveableCam.setPosition(camX, camY, camZ);
   moveableCam.lookAt(0, 0, 0);
 }
